@@ -1,15 +1,16 @@
 package tests;
 
 import manager.AppManager;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import manager.TestNgListener;
+import org.testng.annotations.*;
 
+@Listeners(TestNgListener.class)
 public class TestBase implements AppManager {
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void start(){
         init();
     }
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void stop(){
         //tearDown();
     }

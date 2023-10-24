@@ -22,6 +22,8 @@ public interface HelperLogin extends HelperBase{
     By buttonSignUpForm = By.id("signup-submit");
 
     By buttonAlreadyHaveAcc = By.id("already-have-an-account");
+
+    By messageIncorrectEmailPassword = By.xpath("//div[@data-testid='form-error--content']/span");
     default void clickButtonLogin(){
         click(buttonLogin);
     }
@@ -62,4 +64,7 @@ public interface HelperLogin extends HelperBase{
         return isElementPresent(buttonAlreadyHaveAcc);
     }
 
+    default boolean isElementPresent_Incorrect_password(){
+        return isElementPresent(messageIncorrectEmailPassword);
+    }
 }
