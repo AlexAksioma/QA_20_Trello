@@ -12,6 +12,10 @@ build/
 *.iws
 *.iml
 *.ipr
+*.log
+*.properties
+*.csw
+*.png
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/

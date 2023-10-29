@@ -11,17 +11,17 @@ import java.lang.reflect.Method;
 public class LoginTests extends TestBase implements HelperLogin {
 
     //private long timeStart, timeStop;
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void precondition() {
         clickButtonLogin();
     }
 
 
-    @Test()
+    @Test(groups = {"positive", "smoke"})
     public void loginPositiveTest(Method method) {
         UserDTO user = UserDTO.builder()
-                .email("alexmedqwerty@gmail.com")
-                .password("AlexMed123!")
+                .email(getEmail())
+                .password(getPassword())
                 .build();
         //timeStart = System.currentTimeMillis();
         //logger.info("Start test --> "+method.getName());
@@ -37,7 +37,7 @@ public class LoginTests extends TestBase implements HelperLogin {
         //logger.info("Method stop --> "+method.getName()+" method duration="+(timeStop-timeStart));
     }
 
-    @Test()
+    @Test(groups = {"negative"})
     public void loginNegativeTest_wrongEmail_WO_dot() {
         UserDTO user = UserDTO.builder()
                 .email("alexmedqwerty@gmailcom")
@@ -49,7 +49,7 @@ public class LoginTests extends TestBase implements HelperLogin {
         Assert.assertTrue(isElementPresent_buttonSignUpForm());
     }
 
-    @Test()
+    @Test(groups = {"negative"})
     public void loginNegativeTest_wrongPassword() {
         UserDTO user = UserDTO.builder()
                 .email("alexmedqwerty@gmail.com")
@@ -64,7 +64,7 @@ public class LoginTests extends TestBase implements HelperLogin {
 
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void afterTest() {
         if (isElementPresent_buttonAlreadyHaveAcc())
             clickButtonAlreadyHaveAcc();

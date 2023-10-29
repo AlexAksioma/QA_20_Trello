@@ -27,3 +27,43 @@ dependencies {
 test {
     useTestNG()
 }
+
+task loginTests(type:Test){
+    useTestNG(){
+        suites 'src/test/resources/login.xml'
+    }
+    if(project.hasProperty("target")){
+        systemProperty 'target',"${target}"
+    }
+}
+
+task smokeTests(type:Test){
+    useTestNG(){
+        suites 'src/test/resources/smoke.xml'
+    }
+
+}
+
+task groupsTests(type:Test){
+    useTestNG() {
+        def groups = System.getProperty('groups')
+        if (groups != null) {
+            includeGroups groups
+        }
+    }
+}
+
+task tests(type:Test){
+    useTestNG(){
+        def suite = System.getProperty('suite','')
+        if(suite.equals('all')){
+            suites 'src/test/resources/all.xml'
+        }else if(suite.equals('boards')){
+            suites 'src/test/resources/bords.xml'
+        }else {
+            suites 'src/test/resources/login.xml'
+        }
+
+
+    }
+}
