@@ -44,7 +44,7 @@ public class BoardsTests extends TestBase implements HelperBoards, HelperLogin {
 
     }
 
-    @Test(dataProvider = "dpFile_createBoardPositiveTest", dataProviderClass = DP_ForBoard.class, groups = {"positive", "smoke"})
+    @Test(dataProvider = "dpFile_createBoardPositiveTest", dataProviderClass = DP_ForBoard.class)
     public void createBoardPositiveTest_dpFile(BoardDTO board){
         createBoard(board);
         System.out.println(board.toString());
