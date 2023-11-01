@@ -31,18 +31,18 @@ public class BoardsTests extends TestBase implements HelperBoards, HelperLogin {
 
     }
 
-    @Test(dataProvider = "dp_createBoardPositiveTest", dataProviderClass = DP_ForBoard.class, groups = {"positive", "smoke"})
-    public void createBoardPositiveTest(BoardDTO board){
-//        int i = new Random().nextInt(1000)+1000;
-//        BoardDTO board = BoardDTO.builder()
-//                .boardTitle("Alex_"+i)
-//                .build();
-        createBoard(board);
-        System.out.println(board.toString());
-        System.out.println(isTextInElementPresent_boardNameDisplay());
-        Assert.assertEquals(isTextInElementPresent_boardNameDisplay(), board.getBoardTitle());
-
-    }
+//    @Test(dataProvider = "dp_createBoardPositiveTest", dataProviderClass = DP_ForBoard.class, groups = {"positive", "smoke"})
+//    public void createBoardPositiveTest(BoardDTO board){
+////        int i = new Random().nextInt(1000)+1000;
+////        BoardDTO board = BoardDTO.builder()
+////                .boardTitle("Alex_"+i)
+////                .build();
+//        createBoard(board);
+//        System.out.println(board.toString());
+//        System.out.println(isTextInElementPresent_boardNameDisplay());
+//        Assert.assertEquals(isTextInElementPresent_boardNameDisplay(), board.getBoardTitle());
+//
+//    }
 
     @Test(dataProvider = "dpFile_createBoardPositiveTest", dataProviderClass = DP_ForBoard.class)
     public void createBoardPositiveTest_dpFile(BoardDTO board){
@@ -67,10 +67,11 @@ public class BoardsTests extends TestBase implements HelperBoards, HelperLogin {
         deleteBoard();
     }
 
-//    @AfterMethod
-//    public void afterTest(){
-//        clickButtonBoards();
-//    }
+    @AfterMethod
+    public void afterTest(){
+        if(isElementPresent_buttonBoard())
+            clickButtonBoards();
+    }
 
 
 

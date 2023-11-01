@@ -54,4 +54,8 @@ public interface HelperBoards extends HelperBase{
         click(buttonPermanentlyDeleteBoard);
         click(buttonDelete);
     }
+
+    default  boolean isElementPresent_buttonBoard(){
+        return true;
+    }
 }
