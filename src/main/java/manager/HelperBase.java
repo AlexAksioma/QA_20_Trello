@@ -2,6 +2,8 @@ package manager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public interface HelperBase extends AppManager{
 
@@ -31,5 +33,14 @@ public interface HelperBase extends AppManager{
 
     default boolean isElementPresent(By locator){
         return !driver.findElements(locator).isEmpty();
+    }
+
+    default boolean isElementVisible(By by, int time){
+        try {
+            new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOf(driver.findElement(by)));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }

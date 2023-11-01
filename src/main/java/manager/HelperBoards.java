@@ -25,6 +25,13 @@ public interface HelperBoards extends HelperBase{
 
     By buttonDelete = By.xpath("//button[@data-testid='close-board-delete-board-confirm-button']");
 
+    By buttonBoard = By.xpath("//button[@data-testid='view-switcher-button-more']");
+
+    By messageDeleteBoard = By.xpath("//span[text()='Board deleted.']");
+
+    By buttonLogOut = By.xpath("//button/span[text()='Log out']");
+
+    By buttonLogOutSubmit = By.id("logout-submit");
     default void createBoard(BoardDTO board){
         click(buttonCreateBoard);
         type(fieldBoardTitle, board.getBoardTitle());
@@ -56,6 +63,18 @@ public interface HelperBoards extends HelperBase{
     }
 
     default  boolean isElementPresent_buttonBoard(){
-        return true;
+        return isElementPresent(buttonBoard);
+    }
+
+    default boolean isElementVisible_messageDeleteBoard(){
+        return isElementVisible(messageDeleteBoard, 5);
+    }
+
+    default void clickButtonLogOut(){
+        click(buttonLogOut);
+    }
+
+    default void clickButtonLogOutSubmit(){
+        click(buttonLogOutSubmit);
     }
 }

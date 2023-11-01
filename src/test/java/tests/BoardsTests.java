@@ -6,10 +6,7 @@ import manager.HelperLogin;
 import models.BoardDTO;
 import models.UserDTO;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.Iterator;
 import java.util.Random;
@@ -65,12 +62,20 @@ public class BoardsTests extends TestBase implements HelperBoards, HelperLogin {
         clickButtonBoards();
         clickButtonBoardWithTitle(board.getBoardTitle());
         deleteBoard();
+        Assert.assertTrue(isElementVisible_messageDeleteBoard());
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void afterTest(){
         if(isElementPresent_buttonBoard())
             clickButtonBoards();
+    }
+
+    @AfterClass
+    public void logout(){
+        clickButtonAccount();
+        clickButtonLogOut();
+        clickButtonLogOutSubmit();
     }
 
 
