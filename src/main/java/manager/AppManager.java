@@ -2,6 +2,7 @@ package manager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,8 +18,10 @@ public interface AppManager {
 
     Logger logger = LoggerFactory.getLogger(AppManager.class);
 
-    WebDriver driver = new ChromeDriver();
+//    ChromeOptions options = new ChromeOptions().addArguments("--headless");
+//    WebDriver driver = new ChromeDriver(options);
 
+    WebDriver driver = new ChromeDriver();
     Properties properties = new Properties();
 
     default void init() throws IOException {

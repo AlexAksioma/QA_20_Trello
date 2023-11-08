@@ -43,4 +43,8 @@ public interface HelperBase extends AppManager{
             return false;
         }
     }
+
+    //================
+
+
 }

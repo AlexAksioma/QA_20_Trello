@@ -6,7 +6,8 @@ public interface HelperLogin extends HelperBase{
 
     By buttonLogin = By.xpath("//a[@data-uuid='MJFtCCgVhXrVl7v9HA7EH_login']");
 
-    By fieldLogin = By.id("username");
+    //By fieldLogin = By.id("username");
+    By fieldLogin = By.xpath("//input[@placeholder='Enter your email']");
 
     By buttonContinue = By.id("login-submit");
 
@@ -24,6 +25,12 @@ public interface HelperLogin extends HelperBase{
     By buttonAlreadyHaveAcc = By.id("already-have-an-account");
 
     By messageIncorrectEmailPassword = By.xpath("//div[@data-testid='form-error--content']/span");
+
+    By buttonLogOut = By.xpath("//button[@data-testid='account-menu-logout']");
+
+    By buttonLogOutSubmit = By.id("logout-submit");
+
+    By buttonSignup = By.id("signup-submit");
     default void clickButtonLogin(){
         click(buttonLogin);
     }
@@ -66,5 +73,17 @@ public interface HelperLogin extends HelperBase{
 
     default boolean isElementPresent_Incorrect_password(){
         return isElementPresent(messageIncorrectEmailPassword);
+    }
+
+//    default void clickButtonLogOut(){
+//        click(buttonLogOut);
+//    }
+
+//    default void clickButtonLogOutSubmit(){
+//        click(buttonLogOutSubmit);
+//    }
+
+    default void clickButtonSignup(){
+        click(buttonSignup);
     }
 }

@@ -28,9 +28,9 @@ public interface HelperProfile extends HelperBase{
         new WebDriverWait(driver, 5).until(ExpectedConditions.titleIs("Atlassian account"));
         //click(By.xpath("//button[@data-testid='profile-avatar-dropdown-trigger']"));
         Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(profilePhotoAndHeaderImage), -15, 115).pause(500).click().perform();
+        actions.moveToElement(driver.findElement(profilePhotoAndHeaderImage), -15, 115).pause(3500).click().perform();
         click(buttonChangeProfilePhoto);
-        uploadPhoto("C:\\QA_Auto_Projects\\QA_20\\QA_20_Trello\\src\\test\\resources\\cat1.jpg");
+        uploadPhoto("C:/QA_Auto_Projects/QA_20/QA_20_Trello/src/test/resources/photo/qa_blue.jpg");
         click(buttonUpload);
     }
 
@@ -40,5 +40,11 @@ public interface HelperProfile extends HelperBase{
 
     default boolean isElementVisible_avatarAdded(){
         return isElementVisible(messageAvatarAdded, 10);
+    }
+
+    default void returnToTrelloPage() {
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.close();
+        driver.switchTo().window(tabs.get(0));
     }
 }

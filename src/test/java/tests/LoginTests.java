@@ -1,5 +1,6 @@
 package tests;
 
+import manager.HelperBoards;
 import manager.HelperLogin;
 import models.UserDTO;
 import org.slf4j.Logger;
@@ -8,7 +9,7 @@ import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 
-public class LoginTests extends TestBase implements HelperLogin {
+public class LoginTests extends TestBase implements HelperLogin, HelperBoards {
 
     //private long timeStart, timeStop;
     @BeforeMethod(alwaysRun = true)
@@ -66,7 +67,20 @@ public class LoginTests extends TestBase implements HelperLogin {
 
     @AfterMethod(alwaysRun = true)
     public void afterTest() {
-        if (isElementPresent_buttonAlreadyHaveAcc())
-            clickButtonAlreadyHaveAcc();
+    if(isElementPresent_buttonLogOut()){ // loginPositiveTest
+        clickButtonLogOut();
+        clickButtonLogOutSubmit();
+    }
+
+    if(isElementPresent_buttonAlreadyHaveAcc()){
+        typeLogin(getEmail());
+        //clickButtonContinue();
+        clickButtonSignup();
+        typePassword(getPassword());
+        clickButtonLoginForm();
+        clickButtonAccount();
+    }
+
+
     }
 }

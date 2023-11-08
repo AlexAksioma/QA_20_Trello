@@ -2,6 +2,8 @@ package manager;
 
 import models.BoardDTO;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public interface HelperBoards extends HelperBase{
 
@@ -32,7 +34,7 @@ public interface HelperBoards extends HelperBase{
     By buttonLogOut = By.xpath("//button/span[text()='Log out']");
 
     By buttonLogOutSubmit = By.id("logout-submit");
-    default void createBoard(BoardDTO board){
+    default void createBoard(BoardDTO board){ // !!!!!1
         click(buttonCreateBoard);
         type(fieldBoardTitle, board.getBoardTitle());
         pause(3);
@@ -52,7 +54,7 @@ public interface HelperBoards extends HelperBase{
         click(By.xpath(xPathBoard));
     }
 
-    default void deleteBoard(){
+    default void deleteBoard(){  //!!!!!!!!
         pause(3);
         click(buttonDots);
         pause(3);
@@ -61,6 +63,8 @@ public interface HelperBoards extends HelperBase{
         click(buttonPermanentlyDeleteBoard);
         click(buttonDelete);
     }
+
+
 
     default  boolean isElementPresent_buttonBoard(){
         return isElementPresent(buttonBoard);
@@ -76,5 +80,9 @@ public interface HelperBoards extends HelperBase{
 
     default void clickButtonLogOutSubmit(){
         click(buttonLogOutSubmit);
+    }
+
+    default boolean isElementPresent_buttonLogOut(){
+        return isElementPresent(buttonLogOut);
     }
 }

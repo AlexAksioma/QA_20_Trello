@@ -1,18 +1,20 @@
 package tests;
 
+import manager.HelperBoards;
 import manager.HelperLogin;
 import manager.HelperProfile;
 import models.UserDTO;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileTests extends TestBase implements HelperProfile, HelperLogin {
+public class ProfileTests extends TestBase implements HelperProfile, HelperLogin, HelperBoards {
 
     @BeforeClass(alwaysRun = true)
     public void login(){
@@ -29,10 +31,18 @@ public class ProfileTests extends TestBase implements HelperProfile, HelperLogin
 
     }
 
-    @Test
+    @Test(invocationCount = 1)
     public  void changeProfilePhotoTest(){
         clickButtonAccount();
         changeProfilePhoto();
         Assert.assertTrue(isElementVisible_avatarAdded());
+        returnToTrelloPage();
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void logout(){
+        clickButtonAccount();
+        clickButtonLogOut();
+        clickButtonLogOutSubmit();
     }
 }
