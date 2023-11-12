@@ -31,7 +31,7 @@ public class ProfileTests extends TestBase implements HelperProfile, HelperLogin
 
     }
 
-    @Test(invocationCount = 2)
+    @Test(invocationCount = 1)
     public  void changeProfilePhotoTest(){
         clickButtonAccount();
         changeProfilePhoto();

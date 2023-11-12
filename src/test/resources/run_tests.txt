@@ -1,1 +1,2 @@
 gradle clean tests -Dsuite=boards
+gradle clean tests -Dsuite=profile

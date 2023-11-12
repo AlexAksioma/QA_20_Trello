@@ -59,7 +59,9 @@ task tests(type:Test){
         if(suite.equals('all')){
             suites 'src/test/resources/all.xml'
         }else if(suite.equals('boards')){
-            suites 'src/test/resources/bords.xml'
+            suites 'src/test/resources/bords.xml'}
+        else if(suite.equals('profile')){
+            suites 'src/test/resources/profile.xml'
         }else {
             suites 'src/test/resources/login.xml'
         }
