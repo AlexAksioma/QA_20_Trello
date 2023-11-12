@@ -31,11 +31,11 @@ public class ProfileTests extends TestBase implements HelperProfile, HelperLogin
 
     }
 
-    @Test(invocationCount = 1)
+    @Test(invocationCount = 2)
     public  void changeProfilePhotoTest(){
         clickButtonAccount();
         changeProfilePhoto();
-        Assert.assertTrue(isElementVisible_avatarAdded());
+        Assert.assertTrue(isElementLocated_avatarAdded());
         returnToTrelloPage();
     }
 

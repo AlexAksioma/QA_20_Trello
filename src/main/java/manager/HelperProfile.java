@@ -42,6 +42,10 @@ public interface HelperProfile extends HelperBase{
         return isElementVisible(messageAvatarAdded, 10);
     }
 
+    default boolean isElementLocated_avatarAdded(){
+        return isElementLocated(messageAvatarAdded, 10);
+    }
+
     default void returnToTrelloPage() {
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.close();

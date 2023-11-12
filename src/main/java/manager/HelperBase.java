@@ -43,8 +43,24 @@ public interface HelperBase extends AppManager{
             return false;
         }
     }
+    default boolean isElementLocated(By by, int time){
+        try {
+            new WebDriverWait(driver, time).until(ExpectedConditions.presenceOfElementLocated(by));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 
     //================
+    default void clickWait_elementIsClickable(By by, int time){
+        new WebDriverWait(driver, time).
+                until(ExpectedConditions.elementToBeClickable(by)).click();
+    }
 
+    default void clickWait_elementLocated(By by, int time){
+        new WebDriverWait(driver, time).
+                until(ExpectedConditions.presenceOfElementLocated(by)).click();
+    }
 
 }

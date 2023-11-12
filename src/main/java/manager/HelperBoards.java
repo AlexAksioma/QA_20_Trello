@@ -37,8 +37,9 @@ public interface HelperBoards extends HelperBase{
     default void createBoard(BoardDTO board){ // !!!!!1
         click(buttonCreateBoard);
         type(fieldBoardTitle, board.getBoardTitle());
-        pause(3);
-        click(buttonCreate);
+        //pause(3);
+        //click(buttonCreate);
+        clickWait_elementIsClickable(buttonCreate, 5);
     }
 
     default void clickButtonBoards(){
@@ -55,9 +56,10 @@ public interface HelperBoards extends HelperBase{
     }
 
     default void deleteBoard(){  //!!!!!!!!
-        pause(3);
-        click(buttonDots);
-        pause(3);
+//        pause(3);
+//        click(buttonDots);
+        clickWait_elementLocated(buttonDots, 5);
+        //pause(3);
         click(buttonCloseBoard);
         click(buttonClose);
         click(buttonPermanentlyDeleteBoard);
